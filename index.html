@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="https://darpanadhikari.com.np/addition/images/logo.ico" />
+    <title>Hour Counter — Firebase Only</title>
+    <link rel="stylesheet" href="assets/style_drp.min.css" />
+  </head>
+  <body>
+    <!-- Auth -->
+    <div id="firebaseAuthContainer" class="auth">
+      <h2>Login or Register</h2>
+      <input type="email" id="emailInput" placeholder="Email" />
+      <input type="password" id="passwordInput" placeholder="Password (min 6)" />
+      <div class="flex">
+        <button id="loginBtn">Login</button>
+        <button id="registerBtn">Register</button>
+        <button id="resetBtn">Reset Password</button>
+      </div>
+      <span id="authMessage" class="note"></span>
+    </div>
+
+    <!-- App -->
+    <div class="container hidden" id="appContent">
+      <div id="welcome-banner"></div>
+      <div class="toolbar">
+        <label>
+          Choose Date<br />
+          <input type="date" id="datePicker" />
+        </label>
+        <select id="filterDate">
+          <option value="all">— Filter By Month —</option>
+        </select>
+        <label>
+          From <br>
+          <input type="date" id="dateRangeFrom">
+        </label>
+        <label>
+          To <br>
+          <input type="date" id="dateRangeTo">
+        </label>
+        <button id="rangeBtn">📅 Calculate Range</button>
+        <button id="logoutBtn" class="danger">Logout</button>
+      </div>
+      <div id="dateContainer"></div>
+      <div class="summary" id="totalHours"></div>
+    </div>
+
+    <!-- Range Modal -->
+    <div class="modal" id="rangeModal">
+      <div class="modal-content">
+        <button class="top-close" id="closeRange">×</button>
+        <h3 id="modalTitle">Calculate Time Range</h3>
+        <div id="modalBody"></div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast hidden"></div>
+
+    <footer>
+      <span><i>©</i> <span id="year"></span> <a href="https://darpanadhikari.com.np" target="_blank" style="color:#aab3c7;text-decoration:none">DarpanAdhikari</a> — All rights reserved</span>
+    </footer>
+
+    <!-- Firebase (ESM) + App Scripts -->
+    <script type="module" src="assets/auth_drp.min.js"></script>
+    <script type="module" src="assets/script_drp.min.js"></script>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
